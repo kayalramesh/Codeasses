@@ -1,4 +1,4 @@
-const API_BASE = 'https://codeasses-api.up.railway.app/api';
+const API_BASE = import.meta.env.DEV ? 'http://localhost:3001/api' : '/api';
 
 const fetchWithAuth = async (url, options = {}) => {
   const token = localStorage.getItem('token');
