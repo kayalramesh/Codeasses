@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String       @id @default(uuid())
+  name         String
+  email        String       @unique
+  passwordHash String
+  createdAt    DateTime     @default(now())
+  submissions  Submission[]
+}
+
+model Problem {
+  id              String           @id @default(uuid())
+  slug            String           @unique
+  title           String
+  difficulty      String
+  statement       String
+  constraints     String
+  createdAt       DateTime         @default(now())
+  sampleTestCases SampleTestCase[]
+  hiddenTestCases HiddenTestCase[]
+  submissions     Submission[]
+}
+
+model SampleTestCase {
+  id             String  @id @default(uuid())
+  problemId      String
+  problem        Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  input          String
+  expectedOutput String
+  orderIndex     Int
+}
+
+model HiddenTestCase {
+  id             String  @id @default(uuid())
+  problemId      String
+  problem        Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  input          String
+  expectedOutput String
+}
+
+model Submission {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problemId   String
+  problem     Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  language    String
+  sourceCode  String
+  verdict     String
+  passedCount Int
+  totalCount  Int
+  createdAt   DateTime @default(now())
+}
