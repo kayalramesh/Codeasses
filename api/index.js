@@ -10,9 +10,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Mount on /api for local dev or if originalUrl is preserved
 app.use('/api/auth', authRoutes);
 app.use('/api/problems', problemRoutes);
 app.use('/api/', submissionRoutes);
+
+// Mount on root for Vercel if /api is stripped
+app.use('/auth', authRoutes);
+app.use('/problems', problemRoutes);
+app.use('/', submissionRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
