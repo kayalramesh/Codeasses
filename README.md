@@ -1,6 +1,6 @@
-# CodeAssess
+# Stratix
 
-CodeAssess is a rigorous testing platform designed to evaluate deep conceptual understanding of algorithms through hidden test cases and strict execution limits. 
+Stratix is a rigorous testing platform designed to evaluate deep conceptual understanding of algorithms through hidden test cases and strict execution limits. 
 
 ## Features
 

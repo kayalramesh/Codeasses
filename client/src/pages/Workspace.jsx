@@ -97,7 +97,7 @@ export default function Workspace() {
         <div className="flex items-center gap-4">
           <Link to="/dashboard" className="text-[var(--text-secondary)] hover:text-white flex items-center gap-1 transition-colors">
             <ChevronLeft className="w-5 h-5" />
-            <span className="font-semibold tracking-tight text-white hidden md:inline">CodeAssess</span>
+            <span className="font-semibold tracking-tight text-white hidden md:inline">Stratix</span>
           </Link>
         </div>
         <div className="flex gap-3">

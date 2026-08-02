@@ -49,7 +49,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-white flex flex-col">
       <nav className="flex items-center justify-between p-4 px-6 md:px-12 border-b border-[var(--border)] bg-[var(--background-panel)]">
-        <Link to="/" className="text-xl font-bold tracking-tight text-white">CodeAssess</Link>
+        <Link to="/" className="text-xl font-bold tracking-tight text-white">Stratix</Link>
         <div className="flex items-center gap-4">
           <span className="text-sm text-[var(--text-secondary)] hidden md:inline">Hello, <span className="text-white font-medium">{user?.name}</span></span>
           <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 text-sm text-[var(--text-secondary)] hover:text-white transition-colors bg-[var(--background)] border border-[var(--border)] rounded">

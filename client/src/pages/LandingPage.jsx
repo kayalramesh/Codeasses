@@ -8,7 +8,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-white font-sans flex flex-col">
       <nav className="flex items-center justify-between p-6 border-b border-[var(--border)]">
-        <div className="text-xl font-bold tracking-tight">CodeAssess</div>
+        <div className="text-xl font-bold tracking-tight">Stratix</div>
         <div className="hidden md:flex gap-6 items-center text-sm font-medium">
           <a href="#features" className="hover:text-[var(--primary)] transition-colors">Features</a>
           <a href="#about" className="hover:text-[var(--primary)] transition-colors">About</a>
@@ -31,7 +31,7 @@ export default function LandingPage() {
       <main className="flex-1 flex flex-col">
         <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-24 bg-gradient-to-b from-[var(--background)] to-[var(--background-panel)]">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 max-w-3xl leading-tight">
-            CodeAssess
+            Stratix
           </h1>
           <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-2xl">
             Practice core algorithms and get instantly graded against hidden test cases.
@@ -63,9 +63,9 @@ export default function LandingPage() {
 
         <section id="about" className="py-20 px-6 md:px-12 bg-[var(--background-panel)]">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">About CodeAssess</h2>
+            <h2 className="text-3xl font-bold mb-6">About Stratix</h2>
             <p className="text-[var(--text-secondary)] text-lg mb-4">
-              CodeAssess exists to help instructors verify conceptual understanding, not rote memorization. It was built specifically for classroom and assessment use, providing a clean, distraction-free environment.
+              Stratix exists to help instructors verify conceptual understanding, not rote memorization. It was built specifically for classroom and assessment use, providing a clean, distraction-free environment.
             </p>
             <p className="text-[var(--text-secondary)] text-lg">
               By separating sample validation from final submission, students are encouraged to think critically about edge cases rather than trial-and-error programming.
@@ -87,7 +87,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="p-6 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center text-[var(--text-secondary)] text-sm">
-        <div>&copy; {new Date().getFullYear()} CodeAssess. All rights reserved.</div>
+        <div>&copy; {new Date().getFullYear()} Stratix. All rights reserved.</div>
         <div className="flex gap-4 mt-4 md:mt-0">
           <a href="#features" className="hover:text-white">Features</a>
           <a href="#about" className="hover:text-white">About</a>

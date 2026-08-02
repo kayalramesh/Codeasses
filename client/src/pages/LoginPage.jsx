@@ -32,7 +32,7 @@ export default function LoginPage() {
       <div className="bg-[var(--background-panel)] p-8 rounded-xl border border-[var(--border)] w-full max-w-md shadow-2xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Welcome Back</h1>
-          <p className="text-[var(--text-secondary)]">Sign in to continue to CodeAssess</p>
+          <p className="text-[var(--text-secondary)]">Sign in to continue to Stratix</p>
         </div>
 
         {error && (
