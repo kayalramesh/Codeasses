@@ -44,7 +44,7 @@ export default function RegisterPage() {
       <div className="bg-[var(--background-panel)] p-8 rounded-xl border border-[var(--border)] w-full max-w-md shadow-2xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Create Account</h1>
-          <p className="text-[var(--text-secondary)]">Join Stratix to start practicing</p>
+          <p className="text-[var(--text-secondary)]">Join CodeAssess to start practicing</p>
         </div>
 
         {error && (
