@@ -25,3 +25,7 @@ This document logs engineering decisions made during the development of CodeAsse
 ### Frontend Routing
 **Decision:** `react-router-dom` is used for client-side routing.
 **Reason:** Industry standard for Vite + React SPAs.
+
+### Anti-Cheating Caveat
+**Decision:** The application attempts to block copy/paste, right-clicking, and tracks tab switching using browser APIs.
+**Reason:** These features act as a deterrent. However, this is not a hard guarantee against cheating. A determined student can still retype code from another device, use OS-level screenshots, or run customized browsers to bypass these restrictions. We do not claim this makes cheating impossible.

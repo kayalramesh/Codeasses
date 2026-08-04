@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../api/api';
-import { LogOut, CheckCircle, Circle, Clock } from 'lucide-react';
+import { LogOut, CheckCircle, Circle, Clock, Download } from 'lucide-react';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -29,6 +29,23 @@ export default function Dashboard() {
     navigate('/');
   };
 
+  const handleDownloadPdf = async () => {
+    try {
+      const blob = await api.submissions.downloadPdf(user.id);
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `results-${user.name.replace(/\s+/g, '_')}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to download PDF', err);
+      alert('Failed to download results. Make sure you have completed at least one problem.');
+    }
+  };
+
   const getStatusIcon = (status) => {
     switch (status) {
       case 'Solved': return <CheckCircle className="w-5 h-5 text-[var(--success)]" />;
@@ -52,6 +69,14 @@ export default function Dashboard() {
         <Link to="/" className="text-xl font-bold tracking-tight text-white">CodeAssess</Link>
         <div className="flex items-center gap-4">
           <span className="text-sm text-[var(--text-secondary)] hidden md:inline">Hello, <span className="text-white font-medium">{user?.name}</span></span>
+          <button
+            onClick={handleDownloadPdf}
+            className="flex items-center gap-2 px-3 py-2 text-sm text-[var(--primary)] hover:text-white transition-colors bg-[var(--background)] border border-[var(--primary)] rounded hover:bg-[var(--primary)]"
+            title="Download your results as PDF"
+          >
+            <Download className="w-4 h-4" />
+            <span className="hidden md:inline">Download Result (PDF)</span>
+          </button>
           <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 text-sm text-[var(--text-secondary)] hover:text-white transition-colors bg-[var(--background)] border border-[var(--border)] rounded">
             <LogOut className="w-4 h-4" />
             Logout

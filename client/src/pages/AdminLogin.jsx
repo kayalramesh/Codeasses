@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../api/api';
+import { ShieldCheck } from 'lucide-react';
 
-export default function LoginPage() {
+export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,13 +19,13 @@ export default function LoginPage() {
     
     try {
       const data = await api.auth.login({ email, password });
-      if (data.user.role === 'admin') {
-        setError('This login is for students only. Please use the Admin Login page.');
+      if (data.user.role !== 'admin') {
+        setError('This login is for admin/staff only. Please use the student login.');
         setLoading(false);
         return;
       }
       login(data.token, data.user);
-      navigate('/dashboard');
+      navigate('/admin/dashboard');
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
@@ -36,8 +37,9 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[var(--background)] flex items-center justify-center p-4">
       <div className="bg-[var(--background-panel)] p-8 rounded-xl border border-[var(--border)] w-full max-w-md shadow-2xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Welcome Back</h1>
-          <p className="text-[var(--text-secondary)]">Sign in to continue to CodeAssess</p>
+          <ShieldCheck className="w-12 h-12 text-[var(--primary)] mx-auto mb-4" />
+          <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Admin Login</h1>
+          <p className="text-[var(--text-secondary)]">Sign in to the staff dashboard</p>
         </div>
 
         {error && (
@@ -73,15 +75,12 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold rounded mt-4 transition-colors disabled:opacity-50"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'Signing in...' : 'Sign In as Admin'}
           </button>
         </form>
 
         <p className="text-center text-[var(--text-secondary)] mt-8 text-sm">
-          Don't have an account? <Link to="/register" className="text-[var(--primary)] hover:underline">Sign up</Link>
-        </p>
-        <p className="text-center text-[var(--text-secondary)] mt-3 text-sm">
-          Are you an admin? <Link to="/admin/login" className="text-[var(--primary)] hover:underline">Admin Login</Link>
+          Are you a student? <Link to="/login" className="text-[var(--primary)] hover:underline">Student Login</Link>
         </p>
       </div>
     </div>

@@ -15,6 +15,7 @@ model User {
   name         String
   email        String       @unique
   passwordHash String
+  role         String       @default("student") // "student" or "admin"
   createdAt    DateTime     @default(now())
   submissions  Submission[]
 }
@@ -50,15 +51,20 @@ model HiddenTestCase {
 }
 
 model Submission {
-  id          String   @id @default(uuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  problemId   String
-  problem     Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
-  language    String
-  sourceCode  String
-  verdict     String
-  passedCount Int
-  totalCount  Int
-  createdAt   DateTime @default(now())
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problemId     String
+  problem       Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  language      String?
+  sourceCode    String?
+  verdict       String?
+  passedCount   Int?
+  totalCount    Int?
+  status        String   @default("in_progress") // "in_progress" or "completed"
+  marksObtained Int      @default(0)
+  totalMarks    Int      @default(100)
+  autoSubmitted Boolean  @default(false)
+  offenseCount  Int      @default(0)
+  createdAt     DateTime @default(now())
 }

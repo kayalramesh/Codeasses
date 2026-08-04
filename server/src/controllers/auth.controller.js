@@ -31,7 +31,7 @@ const register = async (req, res) => {
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
     res.status(201).json({
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
       token
     });
   } catch (error) {
@@ -61,7 +61,7 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
     res.json({
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
       token
     });
   } catch (error) {
@@ -72,7 +72,7 @@ const login = async (req, res) => {
 
 const me = async (req, res) => {
   res.json({
-    user: { id: req.user.id, name: req.user.name, email: req.user.email }
+    user: { id: req.user.id, name: req.user.name, email: req.user.email, role: req.user.role }
   });
 };
 

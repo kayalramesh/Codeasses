@@ -20,7 +20,8 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-     const res = await fetch('/api/auth/me', {
+      const base = import.meta.env.DEV ? 'http://localhost:3001/api' : '/api';
+      const res = await fetch(`${base}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {

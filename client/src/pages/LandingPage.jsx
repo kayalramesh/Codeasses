@@ -21,7 +21,8 @@ export default function LandingPage() {
             </Link>
           ) : (
             <>
-              <Link to="/login" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Login</Link>
+              <Link to="/login" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Student Login</Link>
+              <Link to="/admin/login" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Admin Login</Link>
               <Link to="/register" className="px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-md text-sm font-medium transition-colors">Sign Up</Link>
             </>
           )}
@@ -48,7 +49,7 @@ export default function LandingPage() {
               {[
                 { icon: <Code className="w-8 h-8 text-[var(--primary)] mb-4" />, title: 'Multi-language', desc: 'Support for Python, Java, C, and C++ out of the box.' },
                 { icon: <Zap className="w-8 h-8 text-[var(--primary)] mb-4" />, title: 'Instant Feedback', desc: 'Run your code against sample test cases in real-time.' },
-                { icon: <CheckCircle className="w-8 h-8 text-[var(--primary)] mb-4" />, title: 'Rigorous Grading', desc: 'Submit against 30 hidden test cases to truly verify your logic.' },
+                { icon: <CheckCircle className="w-8 h-8 text-[var(--primary)] mb-4" />, title: 'Rigorous Grading', desc: 'Submit against hidden test cases to truly verify your logic.' },
                 { icon: <TrendingUp className="w-8 h-8 text-[var(--primary)] mb-4" />, title: 'Progress Tracking', desc: 'Keep track of your attempted and solved problems.' }
               ].map((f, i) => (
                 <div key={i} className="bg-[var(--background-panel)] p-6 rounded-xl border border-[var(--border)] hover:border-[var(--primary)] transition-colors">
